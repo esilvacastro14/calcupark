@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Calcula fácilmente el costo de tu estacionamiento con CalcuPark."
+    >
+
+    <title>CalcuPark | Calculadora de estacionamiento</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <a href="#" class="brand" aria-label="CalcuPark, inicio">
+            <div class="brand-icon">
+                <span>P</span>
+            </div>
+
+            <div class="brand-text">
+                <span class="brand-name">CalcuPark</span>
+                <span class="brand-caption">ESTACIONAMIENTO INTELIGENTE</span>
+            </div>
+        </a>
+
+        <div class="header-badge">
+            <span class="status-dot"></span>
+            Calculadora gratuita
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- PRESENTACIÓN -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">
+                    <span class="eyebrow-icon">✦</span>
+                    TU ESTACIONAMIENTO, TUS TARIFAS
+                </span>
+
+                <h1>
+                    Estacionarte sin
+                    <span class="gradient-text">sorpresas.</span>
+                </h1>
+
+                <p>
+                    Configura las tarifas de tu estacionamiento y descubre
+                    cuánto pagarás. Fácil, rápido y sin complicaciones.
+                </p>
+
+                <div class="hero-benefits">
+                    <span><span class="check-icon">✓</span> Cálculo rápido</span>
+                    <span><span class="check-icon">✓</span> Tarifas personalizadas</span>
+                    <span><span class="check-icon">✓</span> Sin registro</span>
+                </div>
+            </div>
+
+            <div class="hero-decoration" aria-hidden="true">
+                <div class="hero-circle circle-one"></div>
+                <div class="hero-circle circle-two"></div>
+
+                <div class="parking-illustration">
+                    <div class="parking-sign">P</div>
+                    <div class="parking-line"></div>
+                    <div class="parking-caption">PARKING</div>
+                </div>
+
+                <div class="floating-card floating-card-top">
+                    <span class="floating-icon">⚡</span>
+                    <div>
+                        <strong>Rápido y fácil</strong>
+                        <small>Calcula en segundos</small>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-bottom">
+                    <span class="floating-check">✓</span>
+                    <div>
+                        <strong>Todo bajo control</strong>
+                        <small>Conoce tu tarifa</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- INDICADOR DE PASOS -->
+        <section class="steps-section" aria-label="Pasos de la calculadora">
+
+            <div class="step-item active">
+                <div class="step-number">1</div>
+                <div class="step-label">
+                    <strong>Cortesía</strong>
+                    <span>Minutos gratis</span>
+                </div>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step-item active">
+                <div class="step-number">2</div>
+                <div class="step-label">
+                    <strong>Tarifas</strong>
+                    <span>Precios y fracciones</span>
+                </div>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step-item active">
+                <div class="step-number">3</div>
+                <div class="step-label">
+                    <strong>Tiempo</strong>
+                    <span>Tu estancia</span>
+                </div>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-label">
+                    <strong>Resultado</strong>
+                    <span>Total estimado</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="main-layout">
+
+            <section class="calculator card">
+
+                <div class="card-heading">
+                    <div class="heading-icon">⚙</div>
+
+                    <div>
+                        <span class="section-kicker">PERSONALIZA TU CÁLCULO</span>
+                        <h2>Configura tu estacionamiento</h2>
+                        <p>Completa los siguientes apartados con las tarifas que te aplican.</p>
+                    </div>
+                </div>
+
+
+                <!-- PASO 1: CORTESÍA -->
+                <section class="form-section">
+
+                    <div class="section-title">
+                        <div class="section-number">01</div>
+
+                        <div>
+                            <h3>Tiempo de cortesía</h3>
+                            <p>¿Cuántos minutos gratuitos te ofrecen?</p>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="freeMode">Selecciona el tiempo gratuito</label>
+
+                        <select id="freeMode">
+                            <option value="0">No aplica</option>
+                            <option value="10">10 minutos</option>
+                            <option value="15" selected>15 minutos</option>
+                            <option value="20">20 minutos</option>
+                            <option value="30">30 minutos</option>
+                            <option value="60">60 minutos</option>
+                            <option value="custom">Otro tiempo</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group conditional-field" id="customFreeFields" hidden>
+                        <label for="customFreeMinutes">Tiempo personalizado en minutos</label>
+
+                        <input
+                            type="number"
+                            id="customFreeMinutes"
+                            min="0"
+                            max="1440"
+                            step="1"
+                            value="25"
+                            placeholder="Ej. 25"
+                        >
+
+                        <span class="field-hint">Introduce el número de minutos gratuitos.</span>
+                    </div>
+
+                    <div class="tip-box">
+                        <span class="tip-icon">💡</span>
+                        <p>
+                            El tiempo de cortesía se descuenta antes de calcular
+                            las tarifas de tu estancia.
+                        </p>
+                    </div>
+
+                </section>
+
+
+                <!-- PASO 2: TARIFA INICIAL -->
+                <section class="form-section">
+
+                    <div class="section-title">
+                        <div class="section-number">02</div>
+
+                        <div>
+                            <h3>Tarifa de las primeras horas</h3>
+                            <p>Configura el precio del periodo inicial.</p>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="initialHours">Periodo de la tarifa inicial</label>
+
+                        <select id="initialHours">
+                            <option value="0">No aplica</option>
+                            <option value="1" selected>Primeras 1 hora</option>
+                            <option value="2">Primeras 2 horas</option>
+                            <option value="3">Primeras 3 horas</option>
+                            <option value="4">Primeras 4 horas</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group conditional-field" id="initialPriceFields">
+                        <label for="initialPrice">Costo total del periodo inicial</label>
+
+                        <div class="input-with-prefix">
+                            <span class="input-prefix">$</span>
+
+                            <input
+                                type="number"
+                                id="initialPrice"
+                                min="0"
+                                step="0.01"
+                                value="25"
+                                placeholder="25.00"
+                            >
+
+                            <span class="input-suffix">MXN</span>
+                        </div>
+
+                        <span class="field-hint">
+                            Es el precio por todo el periodo, no por cada hora.
+                        </span>
+                    </div>
+
+                </section>
+
+
+                <!-- PASO 3: BOLETO SELLADO -->
+                <section class="form-section">
+
+                    <div class="section-title">
+                        <div class="section-number">03</div>
+
+                        <div>
+                            <h3>Beneficio por boleto sellado</h3>
+                            <p>Aplica una tarifa especial si tu boleto está sellado.</p>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="sealedEnabled">
+                            ¿Tienes un boleto con tarifa especial?
+                        </label>
+
+                        <select id="sealedEnabled">
+                            <option value="no" selected>No</option>
+                            <option value="yes">Sí, tengo boleto sellado</option>
+                        </select>
+                    </div>
+
+                    <div id="sealedFields" class="conditional-panel" hidden>
+
+                        <div class="field-group">
+                            <label for="sealedHours">Duración de la tarifa especial</label>
+
+                            <select id="sealedHours">
+                                <option value="1">Primeras 1 hora</option>
+                                <option value="2" selected>Primeras 2 horas</option>
+                                <option value="3">Primeras 3 horas</option>
+                                <option value="4">Primeras 4 horas</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="sealedPrice">Costo total con boleto sellado</label>
+
+                            <div class="input-with-prefix">
+                                <span class="input-prefix">$</span>
+
+                                <input
+                                    type="number"
+                                    id="sealedPrice"
+                                    min="0"
+                                    step="0.01"
+                                    value="0"
+                                    placeholder="0.00"
+                                >
+
+                                <span class="input-suffix">MXN</span>
+                            </div>
+
+                            <span class="field-hint">
+                                Escribe 0 si el periodo cubierto es gratuito.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PASO 4: FRACCIONES -->
+                <section class="form-section">
+
+                    <div class="section-title">
+                        <div class="section-number">04</div>
+
+                        <div>
+                            <h3>Fracciones adicionales</h3>
+                            <p>Define cuánto cuesta cada fracción extra.</p>
+                        </div>
+                    </div>
+
+                    <div class="fields-grid">
+
+                        <div class="field-group">
+                            <label for="fractionPrice">Precio por fracción</label>
+
+                            <div class="input-with-prefix">
+                                <span class="input-prefix">$</span>
+
+                                <input
+                                    type="number"
+                                    id="fractionPrice"
+                                    min="0"
+                                    step="0.01"
+                                    value="7"
+                                    placeholder="7.00"
+                                >
+
+                                <span class="input-suffix">MXN</span>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="fractionMinutes">Duración de la fracción</label>
+
+                            <select id="fractionMinutes">
+                                <option value="5">Cada 5 minutos</option>
+                                <option value="10">Cada 10 minutos</option>
+                                <option value="15" selected>Cada 15 minutos</option>
+                                <option value="20">Cada 20 minutos</option>
+                                <option value="30">Cada 30 minutos</option>
+                                <option value="60">Cada 60 minutos</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="fraction-example">
+                        <div class="fraction-example-icon">↗</div>
+
+                        <div>
+                            <strong>¿Cómo funcionan las fracciones?</strong>
+                            <p>El costo adicional depende del precio y la duración que configures.</p>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- PASO 5: TIEMPO -->
+                <section class="form-section">
+
+                    <div class="section-title">
+                        <div class="section-number">05</div>
+
+                        <div>
+                            <h3>Tiempo estacionado</h3>
+                            <p>Indica cuánto tiempo estuvo tu vehículo.</p>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="timeMode">¿Cómo quieres introducir el tiempo?</label>
+
+                        <select id="timeMode">
+                            <option value="schedule">Hora de entrada y salida</option>
+                            <option value="duration">Introducir duración directamente</option>
+                        </select>
+                    </div>
+
+
+                    <div id="scheduleFields" class="time-fields">
+
+                        <div class="fields-grid">
+
+                            <div class="field-group">
+                                <label for="entryTime">Hora de entrada</label>
+
+                                <input type="time" id="entryTime" value="10:00">
+                            </div>
+
+                            <div class="field-group">
+                                <label for="exitTime">Hora de salida</label>
+
+                                <input type="time" id="exitTime" value="12:00">
+                            </div>
+
+                        </div>
+
+                        <div class="time-note">
+                            <span>◷</span>
+                            Si la salida es anterior o igual a la entrada, se considerará el día siguiente.
+                        </div>
+
+                    </div>
+
+
+                    <div id="durationFields" class="time-fields" hidden>
+
+                        <div class="fields-grid">
+
+                            <div class="field-group">
+                                <label for="hours">Horas estacionado</label>
+
+                                <input
+                                    type="number"
+                                    id="hours"
+                                    min="0"
+                                    max="168"
+                                    step="1"
+                                    value="2"
+                                    placeholder="Ej. 2"
+                                >
+                            </div>
+
+                            <div class="field-group">
+                                <label for="minutes">Minutos adicionales</label>
+
+                                <select id="minutes">
+                                    <option value="0">0 minutos</option>
+                                    <option value="15">15 minutos</option>
+                                    <option value="30">30 minutos</option>
+                                    <option value="45">45 minutos</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="duration-preview">
+                            <span>◷</span>
+                            <p id="durationPreview">Tiempo total: 2 horas</p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ACCIÓN PRINCIPAL -->
+                <div class="calculator-actions">
+                    <button type="button" id="calculateBtn" class="primary-btn">
+                        <span>Calcular mi estacionamiento</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                    <p class="privacy-note">
+                        <span>🔒</span>
+                        Sin registro y sin necesidad de compartir tus datos.
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+        <section id="resultCard" class="card result-card" hidden>
+
+            <div class="result-heading">
+                <div class="result-success-icon">✓</div>
+
+                <div>
+                    <span class="section-kicker">CÁLCULO COMPLETADO</span>
+                    <h2>Este es tu resultado</h2>
+                    <p id="resultSubtitle">Este es el costo aproximado de tu estancia.</p>
+                </div>
+            </div>
+
+            <div class="result-total-panel">
+                <div class="result-total-label">
+                    <span class="result-total-icon">$</span>
+                    <span>Total estimado a pagar</span>
+                </div>
+
+                <strong id="total">$0.00</strong>
+
+                <span class="result-currency">Pesos mexicanos (MXN)</span>
+            </div>
+
+            <div class="result-breakdown">
+                <h3>Desglose del cálculo</h3>
+
+                <div class="breakdown-row">
+                    <span>Tiempo estacionado</span>
+                    <span id="breakdownDuration">0 minutos</span>
+                </div>
+
+                <div class="breakdown-row">
+                    <span>Tiempo de cortesía aplicado</span>
+                    <span id="breakdownFree">0 minutos</span>
+                </div>
+
+                <div class="breakdown-row">
+                    <span>Tarifa inicial o periodo especial</span>
+                    <span id="breakdownFirst">$0.00</span>
+                </div>
+
+                <div class="breakdown-row">
+                    <span>Fracciones adicionales</span>
+                    <span id="breakdownExtra">$0.00</span>
+                </div>
+
+                <div class="breakdown-row">
+                    <span>Número de fracciones</span>
+                    <span id="breakdownFractions">0</span>
+                </div>
+
+                <div class="breakdown-row breakdown-total">
+                    <strong>Total a pagar</strong>
+                    <strong id="breakdownTotal">$0.00</strong>
+                </div>
+            </div>
+
+            <div class="result-footer">
+                <span>✓</span>
+                El resultado es una estimación según las tarifas que configuraste.
+            </div>
+
+        </section>
+
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="footer">
+            <a href="#" class="footer-brand">
+                <span class="footer-brand-icon">P</span>
+                CalcuPark
+            </a>
+
+            <p>
+                Calcula tu estacionamiento con mayor claridad.
+                Verifica siempre las condiciones y tarifas del establecimiento.
+            </p>
+
+            <span class="footer-copy">© 2026 CalcuPark</span>
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
+```
